@@ -1,0 +1,28 @@
+{
+  "name": "boardcollab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BoardCollab - Full-Stack Real-Time Collaborative Whiteboard",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "node dev.js",
+    "start": "node server/src/server.js",
+    "build": "npm run build --workspace=client",
+    "test": "npm test --workspace=server",
+    "load-test": "npm run load-test --workspace=server"
+  },
+  "keywords": [
+    "whiteboard",
+    "socket.io",
+    "realtime",
+    "react",
+    "express",
+    "mongodb",
+    "operational-transformation"
+  ],
+  "author": "BoardCollab Team",
+  "license": "MIT"
+}
