@@ -37,7 +37,7 @@ export const MetricsOverlay = () => {
 
       {/* Subtle Bottom Left System Health Pill */}
       <div
-        className="glass-panel"
+        className="glass-panel metrics-pill"
         style={{
           position: 'fixed',
           bottom: 24,

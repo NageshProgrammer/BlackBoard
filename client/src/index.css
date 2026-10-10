@@ -120,3 +120,63 @@ input, textarea, select {
 .animate-slide-down {
   animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Mobile & Tablet Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    top: 6px !important;
+    left: 8px !important;
+    right: 8px !important;
+    padding: 6px 10px !important;
+    gap: 8px !important;
+  }
+
+  .navbar-subtitle,
+  .navbar-room-badge,
+  .navbar-latency {
+    display: none !important;
+  }
+
+  .navbar-status-pill span {
+    display: none !important;
+  }
+
+  .glass-toolbar {
+    bottom: 12px !important;
+    max-width: 96vw !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 6px 8px !important;
+    gap: 3px !important;
+  }
+
+  .glass-toolbar button {
+    padding: 6px 6px !important;
+  }
+
+  .minimap-panel {
+    display: none !important;
+  }
+
+  .metrics-pill {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 4px 8px !important;
+  }
+
+  .navbar-title {
+    font-size: 13px !important;
+  }
+
+  .navbar-btn-text {
+    display: none !important;
+  }
+
+  .glass-toolbar {
+    bottom: 8px !important;
+  }
+}

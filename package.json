@@ -14,6 +14,9 @@
     "test": "npm test --workspace=server",
     "load-test": "npm run load-test --workspace=server"
   },
+  "dependencies": {
+    "vite": "^5.4.1"
+  },
   "keywords": [
     "whiteboard",
     "socket.io",

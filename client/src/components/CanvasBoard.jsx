@@ -455,6 +455,50 @@ export const CanvasBoard = ({
     }
   };
 
+  // Touch Handlers for Mobile & Tablet (Finger/Stylus Drawing & 2-finger pan)
+  const handleTouchStart = (e) => {
+    if (e.touches.length === 1) {
+      const touch = e.touches[0];
+      handleMouseDown({
+        clientX: touch.clientX,
+        clientY: touch.clientY,
+        button: 0,
+        preventDefault: () => {}
+      });
+    } else if (e.touches.length === 2) {
+      // 2-finger pan start
+      setIsPanning(true);
+      const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+      const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+      setDragStartPos({ x: midX, y: midY });
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    if (e.touches.length === 1) {
+      const touch = e.touches[0];
+      handleMouseMove({
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+    } else if (e.touches.length === 2 && isPanning) {
+      // 2-finger canvas pan
+      const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+      const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+      dispatch(
+        setViewport({
+          panX: viewport.panX + (midX - dragStartPos.x),
+          panY: viewport.panY + (midY - dragStartPos.y)
+        })
+      );
+      setDragStartPos({ x: midX, y: midY });
+    }
+  };
+
+  const handleTouchEnd = () => {
+    handleMouseUp();
+  };
+
   // Wheel Zoom Handler
   const handleWheel = (e) => {
     e.preventDefault();
@@ -527,6 +571,9 @@ export const CanvasBoard = ({
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onWheel={handleWheel}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
       style={{
         display: 'block',
         width: '100vw',

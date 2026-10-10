@@ -78,10 +78,10 @@ export const Navbar = ({ onClearCanvas, canvasRef }) => {
 
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontWeight: 700, fontSize: 16, color: '#fff', letterSpacing: '-0.3px' }}>
+            <span className="navbar-title" style={{ fontWeight: 700, fontSize: 16, color: '#fff', letterSpacing: '-0.3px' }}>
               BoardCollab
             </span>
-            <span style={{
+            <span className="navbar-room-badge" style={{
               fontSize: 11,
               fontWeight: 600,
               padding: '2px 8px',
@@ -93,7 +93,7 @@ export const Navbar = ({ onClearCanvas, canvasRef }) => {
               ROOM: {currentRoom.roomId}
             </span>
           </div>
-          <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
+          <div className="navbar-subtitle" style={{ fontSize: 12, color: 'var(--text-muted)' }}>
             {currentRoom.name}
           </div>
         </div>
@@ -114,13 +114,13 @@ export const Navbar = ({ onClearCanvas, canvasRef }) => {
           }}
         >
           <FolderPlus size={14} />
-          Rooms
+          <span className="navbar-btn-text">Rooms</span>
         </button>
       </div>
 
       {/* Middle: Connection Status & Latency */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <div style={{
+        <div className="navbar-status-pill" style={{
           display: 'flex',
           alignItems: 'center',
           gap: 6,
@@ -133,11 +133,11 @@ export const Navbar = ({ onClearCanvas, canvasRef }) => {
           color: isOffline ? 'var(--danger)' : (isConnected ? 'var(--success)' : 'var(--warning)')
         }}>
           {isOffline ? <WifiOff size={13} /> : <Wifi size={13} />}
-          <span>{isOffline ? 'Offline Cache' : (isConnected ? 'Live' : 'Connecting...')}</span>
+          <span>{isOffline ? 'Offline' : (isConnected ? 'Live' : 'Connecting...')}</span>
         </div>
 
         {isConnected && (
-          <div style={{
+          <div className="navbar-latency" style={{
             display: 'flex',
             alignItems: 'center',
             gap: 4,
@@ -215,7 +215,7 @@ export const Navbar = ({ onClearCanvas, canvasRef }) => {
           }}
         >
           {copied ? <Check size={14} /> : <Share2 size={14} />}
-          <span>{copied ? 'Copied!' : 'Share'}</span>
+          <span className="navbar-btn-text">{copied ? 'Copied!' : 'Share'}</span>
         </button>
 
         {/* Export Dropdown */}
@@ -236,7 +236,7 @@ export const Navbar = ({ onClearCanvas, canvasRef }) => {
             }}
           >
             <Download size={14} />
-            <span>Export</span>
+            <span className="navbar-btn-text">Export</span>
           </button>
 
           {showExportMenu && (

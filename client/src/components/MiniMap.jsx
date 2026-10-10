@@ -13,7 +13,7 @@ export const MiniMap = () => {
 
   return (
     <div
-      className="glass-panel"
+      className="glass-panel minimap-panel"
       style={{
         position: 'fixed',
         bottom: 24,
